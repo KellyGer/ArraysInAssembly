@@ -1,0 +1,4 @@
+C:\Xpresso\frdmk64f_Assembly\drivers/fsl_clock.h:668:20:CLOCK_EnableClock	24	static
+C:\Xpresso\frdmk64f_Assembly\drivers/fsl_port.h:374:20:PORT_SetPinMux	24	static
+../board/pin_mux.c:32:6:BOARD_InitBootPins	8	static
+../board/pin_mux.c:57:6:BOARD_InitPins	16	static

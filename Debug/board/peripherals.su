@@ -1,0 +1,3 @@
+../board/peripherals.c:105:13:GPIOB_init	4	static
+../board/peripherals.c:112:6:BOARD_InitPeripherals	8	static
+../board/peripherals.c:121:6:BOARD_InitBootPeripherals	8	static
