@@ -50,9 +50,7 @@ int main(void)
 	asm("str r2, [r1]");			//store value at r2 to 0x400FF054 (r1)
 
 
-	// Infinite loop to toggle the LED on and off. A delay needs to be added to see make the toggle visible
-	// PDOR 0x400FF040
-
+	// Check PDOR 0x400FF040 to toggle LED
 	asm("blink:");
 	asm("movw r1, #0x400F");
 	asm("lsl r1, r1, #16");
@@ -64,18 +62,31 @@ int main(void)
 	asm("ldr r3, [r1]"); 			// get the value of PDOR address(r1) into r3
 	asm("and r4, r3, r2");			// bitwise AND r1, r2, put the result in r4 (pin 22 is on (0) or off (1))
 
-	asm("cmp r4, #0"); 				// compare value if r4 to 0
+	asm("movw r5, #0x00FF");		//set counter for delay
+	asm("lsl r5, r5, #16");
+	asm("movw r6, #0x4240");
+	asm("Add r5, r5, r6");
+
+	asm("delay:");
+	asm("sub r5, r5, #1");			// decrement counter each clock cycle
+	asm("cmp r5, #0");
+	asm("bne delay");				// loop delay until counter = 0
+
+
+	asm("cmp r4, #0"); 				// compare value of r4 to 0
 
 	asm("bne turnOffLed");
-
 	asm("orr r3, r3, r2");			// bitwise OR the value of PDOR (r3) with bitmask (r2). Result in r3
 	asm("str r3, [r1]");			// replace the value stored at the address in r1 with new value the new value at r3  (pin 22 = 1, LED OFF)
-    asm("b blink");
+	asm("b blink");
 
 	asm("turnOffLed:");
 	asm("bic r3, r3, r2");			// clear 1 using bitmask (r2)
 	asm("str r3, [r1]");			// replace the value stored at the address in r1 with new value the new value at r3  (pin 22 = 0, LED ON)
 	asm("b blink");
+
+
+
 
 
 

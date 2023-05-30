@@ -1,4 +1,4 @@
-source/assebly.o source/assebly.d: ../source/assebly.c \
+source/assemblyLED.o source/assemblyLED.d: ../source/assemblyLED.c \
  C:\Xpresso\frdmk64f_Assembly\device/fsl_device_registers.h \
  C:\Xpresso\frdmk64f_Assembly\device/MK64F12.h \
  C:\Xpresso\frdmk64f_Assembly\CMSIS/core_cm4.h \

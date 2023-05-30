@@ -4,15 +4,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../source/assebly.c \
+../source/assemblyLED.c \
 ../source/semihost_hardfault.c 
 
 C_DEPS += \
-./source/assebly.d \
+./source/assemblyLED.d \
 ./source/semihost_hardfault.d 
 
 OBJS += \
-./source/assebly.o \
+./source/assemblyLED.o \
 ./source/semihost_hardfault.o 
 
 
@@ -28,7 +28,7 @@ source/%.o: ../source/%.c source/subdir.mk
 clean: clean-source
 
 clean-source:
-	-$(RM) ./source/assebly.d ./source/assebly.o ./source/semihost_hardfault.d ./source/semihost_hardfault.o
+	-$(RM) ./source/assemblyLED.d ./source/assemblyLED.o ./source/semihost_hardfault.d ./source/semihost_hardfault.o
 
 .PHONY: clean-source
 
