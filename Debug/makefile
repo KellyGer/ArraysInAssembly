@@ -30,7 +30,7 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := frdmk64f_Assembly
+BUILD_ARTIFACT_NAME := arraysInAssembly
 BUILD_ARTIFACT_EXTENSION := axf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
@@ -42,24 +42,24 @@ all:
 	+@$(MAKE) --no-print-directory main-build && $(MAKE) --no-print-directory post-build
 
 # Main-build Target
-main-build: frdmk64f_Assembly.axf
+main-build: arraysInAssembly.axf
 
 # Tool invocations
-frdmk64f_Assembly.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
+arraysInAssembly.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -Xlinker -Map="frdmk64f_Assembly.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T frdmk64f_Assembly_Debug.ld -o "frdmk64f_Assembly.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -Xlinker -Map="arraysInAssembly.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T arraysInAssembly_Debug.ld -o "arraysInAssembly.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) frdmk64f_Assembly.axf
+	-$(RM) arraysInAssembly.axf
 	-@echo ' '
 
 post-build:
 	-@echo 'Performing post-build steps'
-	-arm-none-eabi-size "frdmk64f_Assembly.axf"; # arm-none-eabi-objcopy -v -O binary "frdmk64f_Assembly.axf" "frdmk64f_Assembly.bin" ; # checksum -p MK64FN1M0xxx12 -d "frdmk64f_Assembly.bin";
+	-arm-none-eabi-size "arraysInAssembly.axf"; # arm-none-eabi-objcopy -v -O binary "arraysInAssembly.axf" "arraysInAssembly.bin" ; # checksum -p MK64FN1M0xxx12 -d "arraysInAssembly.bin";
 	-@echo ' '
 
 .PHONY: all clean dependents main-build post-build

@@ -6,11 +6,11 @@
  * Generated linker script file for MK64FN1M0xxx12
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v11.7.1 [Build 9221] [2023-03-28] on May 30, 2023, 11:01:26 AM
+ * MCUXpresso IDE v11.7.1 [Build 9221] [2023-03-28] on Jun 2, 2023, 1:25:42 PM
  */
 
-INCLUDE "frdmk64f_Assembly_Debug_library.ld"
-INCLUDE "frdmk64f_Assembly_Debug_memory.ld"
+INCLUDE "arraysInAssembly_Debug_library.ld"
+INCLUDE "arraysInAssembly_Debug_memory.ld"
 
 ENTRY(ResetISR)
 
